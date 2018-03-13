@@ -19,4 +19,9 @@ public class MyBean {
 
         return "I am mySecondMethodInMyBean in Common-Library";
     }
+
+    public String hi(){
+
+        return "Hello from Kati's library. ";
+    }
 }
