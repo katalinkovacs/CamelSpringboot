@@ -2,11 +2,125 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
 
+    <modelVersion>4.0.0</modelVersion>
     <groupId>kati</groupId>
     <artifactId>camel-springboot</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>Application</module>
+        <module>Common-Library</module>
+        <module>Services</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>common-library</module>
+        <module>services</module>
+        <module>application</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- configure the versions you want to use here -->
+        <fabric8.version>2.2.170.redhat-000019</fabric8.version>
+
+        <arquillian-cube.version>1.9.0</arquillian-cube.version>
+        <assertj.version>2.4.1</assertj.version>
+
+        <!-- maven plugin versions -->
+        <fabric8.maven.plugin.version>3.5.31</fabric8.maven.plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+
+        <spring.boot.starter.jetty>1.5.9.RELEASE</spring.boot.starter.jetty>
+        <dependency.mockito.version>1.10.19</dependency.mockito.version>
+        <dependency.swagger.core.version>1.5.12</dependency.swagger.core.version>
+        <spring-boot-maven-plugin.version>1.4.1.RELEASE</spring-boot-maven-plugin.version>
+        <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.fabric8</groupId>
+                <artifactId>fabric8-project-bom-camel-spring-boot</artifactId>
+                <version>${fabric8.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- The following dependencies can be removed whe using fabric8 BOM 2.3.7+ -->
+            <dependency>
+                <groupId>org.arquillian.cube</groupId>
+                <artifactId>arquillian-cube-bom</artifactId>
+                <version>${arquillian-cube.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>maven.central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2</url>
+        </repository>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>redhat.ga</id>
+            <name>Red Hat General Availability Repository</name>
+            <url>https://maven.repository.redhat.com/ga</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>maven.central</id>
+            <name>Maven Central</name>
+            <url>https://repo1.maven.org/maven2</url>
+        </pluginRepository>
+        <pluginRepository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>redhat.ga</id>
+            <name>Red Hat General Availability Repository</name>
+            <url>https://maven.repository.redhat.com/ga</url>
+        </pluginRepository>
+    </pluginRepositories>
 
 
 </project>
