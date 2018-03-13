@@ -10,11 +10,36 @@ public class MyBeanie {
     @Value("${greeting}")
     private String say;
 
+    @Value("${show}")
+    private String show;
+
+    @Value("${name}")
+    private String yourName;
+
     public String saySomething() {
 
         MyBean myBean = new MyBean();
 
         return say + myBean.giveMeSomeCrap();
 
+    }
+
+
+    public String showHello(){
+
+        //MyBean myBean = new MyBean();
+        return show + " I am showing HELLO";
+    }
+
+    public String showHello2(){
+
+        MyBean myBean = new MyBean();
+        return show + " I am showing HELLO 2 " +myBean.mySecondMethodInMyBean();
+    }
+
+    public String welcome(){
+
+        //MyBean myBean = new MyBean();
+        return "Welcome " +yourName;
     }
 }
