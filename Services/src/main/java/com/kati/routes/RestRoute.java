@@ -1,12 +1,13 @@
-package com.beansandroutes.routes;
+package com.kati.routes;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
+import org.springframework.stereotype.Component;
 
 
-//@Component
-public class RestRouteException extends RouteBuilder {
+@Component
+public class RestRoute extends RouteBuilder {
 
 
     @Override
@@ -32,8 +33,8 @@ public class RestRouteException extends RouteBuilder {
         from("jetty://http://0.0.0.0:8082/say")
                 .transform(method("myBean", "saySomething"))
 
-                .setHeader(Exchange.HTTP_URI, simple("http4://localhost:8088/test"))
-                .to("http4://localhost:8088/test?httpClient.socketTimeout=2000&httpClient.connectTimeout=2000")
+                //.setHeader(Exchange.HTTP_URI, simple("http4://localhost:8088/test"))
+                //.to("http4://localhost:8088/test?httpClient.socketTimeout=2000&httpClient.connectTimeout=2000")
 
 
                 .log("log ${body}");

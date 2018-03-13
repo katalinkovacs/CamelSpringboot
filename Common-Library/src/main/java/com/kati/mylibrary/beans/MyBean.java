@@ -1,4 +1,4 @@
-package com.mylibrary.beans;
+package com.kati.mylibrary.beans;
 
 
 

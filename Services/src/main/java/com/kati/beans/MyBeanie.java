@@ -1,6 +1,6 @@
-package com.beansandroutes.beans;
+package com.kati.beans;
 
-import com.mylibrary.beans.MyBean;
+import com.kati.mylibrary.beans.MyBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
