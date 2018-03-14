@@ -48,17 +48,19 @@ public class CustomerRoutes extends RouteBuilder {
 
         //common rest config -- standard always like this -- like restcontroller in MVC
         rest()
-            .get("/show")
+            .get("/show") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
             .route()
                 .to("direct:get-route")
             .endRest()
 
-            .post("/show")
+            .post("/show") //http post request comes here and gets routed to direct:post-route -- you NEED TO USE POSTMAN FOR THIS!!!!!
             .route()
                 .to("direct:post-route")
             .endRest()
         ;
 
+
+        // the request from .post("/show") comes here
         //these are like your model and view in MVC
         from("direct:post-route")
                 .unmarshal(customer1DataFormat)
@@ -67,6 +69,7 @@ public class CustomerRoutes extends RouteBuilder {
                 .log("log ${body}");
 
 
+        // the request from .get("/show") comes here -- this can be invoked from browser
         from("direct:get-route")
                 .transform(method("myBean", "welcome"))
                 .log("log ${body}");
