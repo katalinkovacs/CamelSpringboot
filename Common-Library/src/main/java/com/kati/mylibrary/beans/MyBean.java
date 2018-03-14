@@ -1,8 +1,8 @@
 package com.kati.mylibrary.beans;
 
 
-
 public class MyBean {
+
 
     public String giveMeSomeCrap(){
 
@@ -24,4 +24,5 @@ public class MyBean {
 
         return "Hello from Kati's library. ";
     }
+
 }
