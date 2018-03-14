@@ -72,6 +72,7 @@ public class CustomerRoutes extends RouteBuilder {
         // the request from .get("/show") comes here -- this can be invoked from browser
         from("direct:get-route")
                 .transform(method("myBean", "welcome"))
+                .setHeader(Exchange.CONTENT_TYPE, simple("text/plain"))
                 .log("log ${body}");
 
 
