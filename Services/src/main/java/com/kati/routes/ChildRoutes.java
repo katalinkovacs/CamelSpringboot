@@ -48,19 +48,21 @@ public class ChildRoutes extends RouteBuilder {
         rest()
                 .get("/child") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
                 .route()
-                .to("direct:get-route")
+                //.to("direct:get-route")
+                .to("direct:get-childroute")
                 .endRest()
 
                 .post("/child") //http post request comes here and gets routed to direct:post-route -- you NEED TO USE POSTMAN FOR THIS!!!!!
                 .route()
-                .to("direct:post-route")
+                //.to("direct:post-route")
+                .to("direct:post-childroute")
                 .endRest()
         ;
 
 
         // the request from .post("/show") comes here
         //these are like your model and view in MVC
-        from("direct:post-route")
+        from("direct:post-childroute")
                 .unmarshal(child1DataFormat)
                 .bean(transformChildProcessor, "transformChild")
                 .marshal(child2DataFormat)
@@ -68,7 +70,7 @@ public class ChildRoutes extends RouteBuilder {
 
 
         // the request from .get("/show") comes here -- this can be invoked from browser
-        from("direct:get-route")
+        from("direct:get-childroute")
                 .transform(method("myBean", "myBeanieMethod"))
                 .setHeader(Exchange.CONTENT_TYPE, simple("text/plain"))
                 .log("log ${body}");
