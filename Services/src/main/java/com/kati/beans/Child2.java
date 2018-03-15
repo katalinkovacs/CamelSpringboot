@@ -1,7 +1,10 @@
 package com.kati.beans;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Date;
 
 public class Child2 {
 
@@ -15,7 +18,9 @@ public class Child2 {
     private String familyName;
 
     @JsonProperty
-    private String dob;
+    //private String dob;
+    @JsonFormat(pattern="dd-MM-yyyy")
+    private Date dob;
 
 
     public int getChildId() {
@@ -42,11 +47,11 @@ public class Child2 {
         this.familyName = familyName;
     }
 
-    public String getDob() {
+    public Date getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(Date dob) {
         this.dob = dob;
     }
 }

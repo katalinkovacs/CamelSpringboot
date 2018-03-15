@@ -1,6 +1,9 @@
 package com.kati.beans;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Date;
 
 
 public class Child1 {
@@ -15,7 +18,9 @@ public class Child1 {
     private String lastName;
 
     @JsonProperty
-    private String dateOfBirth;
+    //private String dateOfBirth;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date dateOfBirth;
 
 
     public int getId() {
@@ -42,11 +47,11 @@ public class Child1 {
         this.lastName = lastName;
     }
 
-    public String getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 }
