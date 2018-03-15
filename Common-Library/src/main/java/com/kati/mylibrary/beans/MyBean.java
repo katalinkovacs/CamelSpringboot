@@ -25,4 +25,6 @@ public class MyBean {
         return "Hello from Kati's library. ";
     }
 
+
+
 }
