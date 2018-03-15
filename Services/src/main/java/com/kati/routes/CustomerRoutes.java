@@ -37,32 +37,23 @@ public class CustomerRoutes extends RouteBuilder {
         ;
 
 
-        //common jetty config -- standard always like this
-        restConfiguration()
-                .component("jetty")
-                .scheme("http")
-                .host("localhost")
-                .port("8083")
-                .contextPath("/services")
-         ;
-
         //common rest config -- standard always like this -- like restcontroller in MVC
         rest()
-            .get("/show") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
+            .get("/customer") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
             .route()
-                .to("direct:get-route")
+                .to("direct:get-route-customer")
             .endRest()
 
-            .post("/show") //http post request comes here and gets routed to direct:post-route -- you NEED TO USE POSTMAN FOR THIS!!!!!
+            .post("/customer") //http post request comes here and gets routed to direct:post-route -- you NEED TO USE POSTMAN FOR THIS!!!!!
             .route()
-                .to("direct:post-route")
+                .to("direct:post-route-customer")
             .endRest()
         ;
 
 
         // the request from .post("/show") comes here
         //these are like your model and view in MVC
-        from("direct:post-route")
+        from("direct:post-route-customer") // route endpoint need to be unique in 1 camelcontext
                 .unmarshal(customer1DataFormat)
                 .bean(transformCustomerProcessor, "transformCustomer")
                 .marshal(customer2DataFormat)
@@ -70,7 +61,7 @@ public class CustomerRoutes extends RouteBuilder {
 
 
         // the request from .get("/show") comes here -- this can be invoked from browser
-        from("direct:get-route")
+        from("direct:get-route-customer") // route endpoint need to be unique in 1 camelcontext
                 .transform(method("myBean", "welcome"))
                 .setHeader(Exchange.CONTENT_TYPE, simple("text/plain"))
                 .log("log ${body}");

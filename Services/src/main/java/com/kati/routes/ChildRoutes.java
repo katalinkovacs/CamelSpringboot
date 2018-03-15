@@ -35,32 +35,24 @@ public class ChildRoutes extends RouteBuilder {
         ;
 
 
-        //common jetty config -- standard always like this
-        restConfiguration()
-                .component("jetty")
-                .scheme("http")
-                .host("localhost")
-                .port("8083")
-                .contextPath("/services")
-        ;
 
         //common rest config -- standard always like this -- like restcontroller in MVC
         rest()
                 .get("/child") //http get request comes here and gets routed to direct:get-route -- this can be invoked from browser
                 .route()
-                .to("direct:get-route")
+                .to("direct:get-route-child")
                 .endRest()
 
                 .post("/child") //http post request comes here and gets routed to direct:post-route -- you NEED TO USE POSTMAN FOR THIS!!!!!
                 .route()
-                .to("direct:post-route")
+                .to("direct:post-route-child")
                 .endRest()
         ;
 
 
         // the request from .post("/show") comes here
         //these are like your model and view in MVC
-        from("direct:post-route")
+        from("direct:post-route-child") // route endpoint need to be unique in 1 camelcontext
                 .unmarshal(child1DataFormat)
                 .bean(transformChildProcessor, "transformChild")
                 .marshal(child2DataFormat)
@@ -68,7 +60,7 @@ public class ChildRoutes extends RouteBuilder {
 
 
         // the request from .get("/show") comes here -- this can be invoked from browser
-        from("direct:get-route")
+        from("direct:get-route-child") // route endpoint need to be unique in 1 camelcontext
                 .transform(method("myBean", "myBeanieMethod"))
                 .setHeader(Exchange.CONTENT_TYPE, simple("text/plain"))
                 .log("log ${body}");
