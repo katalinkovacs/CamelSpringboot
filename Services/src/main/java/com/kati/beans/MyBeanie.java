@@ -74,4 +74,12 @@ public class MyBeanie {
         return "Hello " +user +"! " +myBean.hi();
 
     }
+
+    public String myBeanieMethod(){
+
+        MyBean myBean = new MyBean();
+        return "Welcome in my 'myBeanieMethod'! " +myBean.hi();
+    }
+
+
 }
