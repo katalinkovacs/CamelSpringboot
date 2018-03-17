@@ -10,11 +10,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>Application</module>
-        <module>Common-Library</module>
-        <module>Services</module>
+        <module>application</module>
+        <module>common-config</module>
+        <module>common-model</module>
+        <module>services</module>
     </modules>
-
 
 
     <properties>
