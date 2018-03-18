@@ -10,9 +10,12 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>Application</module>
-        <module>Common-Library</module>
-        <module>Services</module>
+
+        <module>common-rest-config</module>
+        <module>common-model</module>
+        <module>services-child</module>
+        <module>services-customer</module>
+        <module>application</module>
     </modules>
 
 
@@ -64,11 +67,10 @@
                 <version>${assertj.version}</version>
             </dependency>
 
-            <!-- Added 14.03 -->
             <dependency>
-                <groupId>org.apache.camel</groupId>
-                <artifactId>camel-ftp</artifactId>
-                <version>2.5.0</version>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jetty</artifactId>
+                <version>${spring.boot.starter.jetty}</version>
             </dependency>
 
         </dependencies>
