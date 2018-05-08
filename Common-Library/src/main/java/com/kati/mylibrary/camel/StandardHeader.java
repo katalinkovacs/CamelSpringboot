@@ -1,4 +1,4 @@
-package com.kati.mylibrary.beans.camel;
+package com.kati.mylibrary.camel;
 
 import com.google.gson.Gson;
 

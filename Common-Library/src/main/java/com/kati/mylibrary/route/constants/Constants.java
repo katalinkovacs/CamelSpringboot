@@ -1,4 +1,4 @@
-package com.kati.mylibrary.beans.route.constants;
+package com.kati.mylibrary.route.constants;
 
 
 public class Constants {

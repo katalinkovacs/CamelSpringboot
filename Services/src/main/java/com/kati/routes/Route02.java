@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 public class Route02 extends RouteBuilder{
 
 
+
+
     @Override
     public void configure() throws Exception {
         getContext().setStreamCaching(true);

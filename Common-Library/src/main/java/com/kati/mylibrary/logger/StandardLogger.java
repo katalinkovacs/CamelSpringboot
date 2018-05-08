@@ -1,12 +1,12 @@
-package com.kati.mylibrary.beans.logger;
+package com.kati.mylibrary.logger;
 
-import com.kati.mylibrary.beans.camel.StandardHeader;
+import com.kati.mylibrary.camel.StandardHeader;
 import org.apache.camel.Exchange;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static com.kati.mylibrary.beans.route.constants.Constants.STEP_FINISH;
-import static com.kati.mylibrary.beans.route.constants.Constants.STEP_START;
+import static com.kati.mylibrary.route.constants.Constants.STEP_FINISH;
+import static com.kati.mylibrary.route.constants.Constants.STEP_START;
 
 
 public class StandardLogger {
